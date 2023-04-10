@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<!--
+Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
+Click nbfs://nbhost/SystemFileSystem/Templates/Other/html.html to edit this template
+-->
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="https://www.thymeleaf.org"
+      xmlns:sec="https://www.thymeleaf.org/thymeleaf-extras-springsecurity6"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout">
+    <head>
+        <title>View Menu</title>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css"/>   
+        
+    </head>
+    
+    <body>
+        <nav class="navbar navbar-inverse">
+            <div class="container-fluid">
+                <div class="navbar-header">
+                    <a class="navbar-brand">Restaurant</a>
+                </div>
+                <ul class="nav navbar-nav">
+                    <li ><a th:href="@{/home}">Home</a></li>
+                    <li ><a th:href="@{/manager}">Manager</a></li>
+                    <li class="active"><a th:href="@{/waiter}">Waiter</a></li>
+                    <li><a th:href="@{/chef}">Chef</a></li>
+                </ul>
+                <form th:action="@{/logout}" method="post">
+                    <input type="submit" value="Sign Out"/>
+                </form>
+            </div>
+        </nav>
+        
+        <div class="container">
+
+            <h1 style="text-align:center;">Parties</h1>
+
+            <div style="align-content: center;">
+        
+              
+                <table class="table table-unbordered">
+                    <thead>
+                        <tr>
+                            <th>Party Id</th>
+                            <th>Party Name</th>
+                            <th>Party Status</th>
+                            <th></th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr th:each="party : ${partyList}">
+                            <td> <a th:href="@{/waiter/update-status/id={id}(id=${party.id})}" th:text="${party.id}"></a> </td>
+                            <td th:text=" ${party.party_name}"></td>
+                            <td th:text=" ${party.party_status}"></td>
+                            <td> 
+                            <a th:href="@{/waiter/delete/id={id}(id=${party.id})}" class="btn btn-primary">Delete</a>
+                            
+                            <a th:href="@{/waiter/view-order/id={id}(id=${party.id})}" class="btn btn-primary">View Order</a>
+                            </td>
+                        </tr>
+
+                    </tbody>
+                </table> 
+            </div>
+        </div>
+    </body>
+</html>

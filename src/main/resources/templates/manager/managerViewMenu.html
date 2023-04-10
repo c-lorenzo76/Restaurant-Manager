@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<!--
+Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
+Click nbfs://nbhost/SystemFileSystem/Templates/Other/html.html to edit this template
+-->
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="https://www.thymeleaf.org"
+      xmlns:sec="https://www.thymeleaf.org/thymeleaf-extras-springsecurity6"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout">
+    <head>
+        <title>View Menu</title>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css"/>   
+        
+    </head>
+    
+    <body>
+        <nav class="navbar navbar-inverse">
+            <div class="container-fluid">
+                <div class="navbar-header">
+                    <a class="navbar-brand">Restaurant</a>
+                </div>
+                <ul class="nav navbar-nav">
+                    <li ><a th:href="@{/home}">Home</a></li>
+                    <li class="active"><a th:href="@{/manager}">Manager</a></li>
+                    <li><a th:href="@{/waiter}">Waiter</a></li>
+                    <li ><a th:href="@{/chef}">Chef</a></li>
+                </ul>
+                <form th:action="@{/logout}" method="post">
+                    <input type="submit" value="Sign Out"/>
+                </form>
+            </div>
+        </nav>
+        
+        <!-- ADD AN EDIT BUTTON LATER TO EDIT THE MENU AS PART OF A USE CASE -->
+        <div class="container">
+
+            <h1 style="text-align:center;">Menu</h1>
+
+            <div style="align-content: center;">
+                
+                <p class="my-5">
+                    <a href="/manager/new-item" class="btn btn-primary" >Add an item to menu</a>
+                </p>
+              
+                <table class="table table-unbordered">
+                    <thead>
+                        <tr>
+                            <th>Entree</th>
+                            <th>Price</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr th:each="menu : ${menuList}" th:if="${menu.type == 'entree'}">
+                                             
+                            <td th:text=" ${menu.itemName}"></td>
+                            <td th:text=" ${menu.price}"></td>
+                        </tr>
+
+                    </tbody>
+                </table>
+                
+                <table class="table table-unbordered">
+                    <thead>
+                        <tr>
+                            <th>Dessert</th>
+                            <th>Price</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr th:each="menu : ${menuList}" th:if="${menu.type == 'dessert'}">
+                                             
+                            <td th:text=" ${menu.itemName}"></td>
+                            <td th:text=" ${menu.price}"></td>
+                        </tr>
+
+                    </tbody>
+                </table>
+                
+                <table class="table table-unbordered">
+                    <thead>
+                        <tr>
+                            <th>Drinks</th>
+                            <th>Price</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr th:each="menu : ${menuList}" th:if="${menu.type == 'drink'}">
+                                             
+                            <td th:text=" ${menu.itemName}"></td>
+                            <td th:text=" ${menu.price}"></td>
+                        </tr>
+
+                    </tbody>
+                </table>
+            </div>
+
+
+        </div>
+        
+        
+        
+        
+    </body>
+
+
+</html>

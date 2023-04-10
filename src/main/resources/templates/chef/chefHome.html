@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="https://www.thymeleaf.org"
+      xmlns:sec="https://www.thymeleaf.org/thymeleaf-extras-springsecurity6">
+    <head>
+        <title>Hello Chef!</title>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css"/>
+        <style>
+            
+            .flex-container{
+                width: 100%;
+                height: auto;
+                display:flex;
+                flex-direction:row;
+                flex-wrap:wrap;
+                justify-content: space-evenly;
+            }
+
+            .flex-box{
+                width: 200px;
+                height: 200px;
+                background:linear-gradient( #dc2f2f,#ff894c);
+                color:white;
+                font-size: 25px;
+                text-align: center;
+                line-height: 200px;
+                border-radius: 20px;
+                margin:10px;
+            }
+
+            .flex-box a{
+                font-size: 16px;
+                color: white;
+                text-align: center;
+                padding: 14px 16px;
+                text-decoration: none;
+                background:transparent;
+
+            }
+            
+        </style>
+        
+
+    </head>
+    <body>
+        <nav class="navbar navbar-inverse">
+            <div class="container-fluid">
+                <div class="navbar-header">
+                    <a class="navbar-brand" href="/">Security</a>
+                </div>
+                <ul class="nav navbar-nav">
+                    <li><a th:href="@{/home}">Home</a></li>
+                    <li><a th:href="@{/manager}">Manager</a></li>
+                    <li><a th:href="@{/waiter}">Waiter</a></li>
+                    <li class="active"><a th:href="@{/chef}">Chef</a></li>
+                </ul>
+                <form th:action="@{/logout}" method="post">
+                    <input type="submit" value="Sign Out"/>
+                </form>
+            </div>
+        </nav>
+        
+        <h1 th:inline="text">Hello <span th:remove="tag" sec:authentication="name">thymeleaf</span>!</h1>
+        <main class="container">
+            <div class="flex-container">
+            
+                <div class="flex-box">
+                    <a href="#">View Parties</a>
+                </div>
+                 <div class="flex-box">
+                    <a href="#">use case #2</a>
+                </div>
+                <div class="flex-box">
+                    <a href="#">use case #3</a>
+                </div>  
+                <div class="flex-box">
+                    <a href="#">use case #4</a>
+                </div>
+
+            </div>
+            <div class="bg-light p-5 rounded">
+                <h1>Chef Content</h1>
+                <p class="lead">This content is only visible for users with CHEF Role. </p>
+
+            </div>
+
+        </main>  
+    </body>
+</html>

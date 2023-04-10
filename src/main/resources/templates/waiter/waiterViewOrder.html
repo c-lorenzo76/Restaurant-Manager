@@ -1,0 +1,89 @@
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="https://www.thymeleaf.org"
+      xmlns:sec="https://www.thymeleaf.org/thymeleaf-extras-springsecurity6"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout">
+
+    <head>
+        <title>Waiter view order</title>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css"/>
+        <style>
+
+        </style>
+
+
+    </head>
+    <body>
+        <nav class="navbar navbar-inverse">
+            <div class="container-fluid">
+                <div class="navbar-header">
+                    <a class="navbar-brand">Restaurant</a>
+                </div>
+                <ul class="nav navbar-nav">
+                    <li ><a th:href="@{/home}">Home</a></li>
+                    <li><a th:href="@{/manager}">Manager</a></li>
+                    <li class="active"><a th:href="@{/waiter}">Waiter</a></li>
+                    <li><a th:href="@{/chef}">Chef</a></li>
+                </ul>
+                <form th:action="@{/logout}" method="post">
+                    <input type="submit" value="Sign Out"/>
+                </form>
+            </div>
+        </nav>
+
+        <h1 th:inline="text">Hello <span th:remove="tag" sec:authentication="name">thymeleaf</span>!</h1>
+        
+    <div class="container">
+
+            <h1 style="text-align:center;">Menu</h1>
+
+            <div style="align-content: center;">
+                
+               
+                
+                <table class="table table-unbordered">
+                    <thead>
+                        <tr>
+                            <th>Item Name</th>
+                            <th>Item Price</th> 
+                            <th>Item Quantity</th>
+                            <th>Party Name</th>
+                            <th>Party Id</th>
+                            <th>Status</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr th:each="party_order : ${items}" th:if="${party_order.party_id == partyId}">
+                                             
+                            <td th:text=" ${party_order.item_name}"></td>
+                            <td th:text=" ${party_order.item_total}"></td>
+                            <td th:text=" ${party_order.item_quantity}"></td>
+                            <td th:text=" ${party_order.party_name}"></td>
+                            <td th:text=" ${party_order.party_id}"></td>
+                            <td th:text=" ${party_order.item_status}"></td>
+                        </tr>
+                        
+                        
+
+                    </tbody>
+                </table>
+                
+                <p style="color: black;font-size:22px;"><b>&nbsp;&nbsp;Total: $[[${#numbers.formatDecimal(total,1,2,'POINT')}]]</b></p>
+                
+                
+            </div>
+        </div>
+    
+    
+    </body>
+</html>
+        <!--
+        
+        -->
+        
+
+
+
+         
+
+  
