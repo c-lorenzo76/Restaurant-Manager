@@ -15,7 +15,8 @@ import org.springframework.web.bind.annotation.RequestMapping;
 
 /**
  *
- * @author nino
+ * @author cristian
+ *
  */
 
 /**
@@ -47,28 +48,7 @@ public class WaiterController {
     @GetMapping("/parties")
     public String viewParties(Model model){
         model.addAttribute("partyList", PartyService.getAllParties());
-        return "waiter/partyOrders";
-    }
-    
-    // deletes the order from the both databases "party" and "party_order"
-    // NEED TO FIX THIS 
-    // ITS DELETING RIGHT FROM PARTY BUT PARTY_ORDER IS NOT DELETING THE CORRECT THING
-    // ITS DELETING BASED OFF THE ID OF THE "party_order" NOT BY THE "party_id"
-    // NEED TO FIND WAY TO MAKE THAT WORK 
-    @GetMapping("delete/id={partyId}")
-    public String deleteParty(@PathVariable long partyId, Model model, Model model2){
-        
-        List<PartyOrder> list = PartyOrderService.getAllPartyOrders();
-        
-        for(PartyOrder items: list){
-            if(items.getParty_id() == partyId){
-                // need to find a way that it goes into the database and deletes every instance of the partyID 
-                PartyOrderService.deletePartyOrder(partyId);
-            }
-        }
-        
-        PartyService.deleteParty(partyId);
-        return "redirect:/waiter/parties";
+        return "waiter/waiterPartyOrders";
     }
     
     @GetMapping("/view-order/id={partyId}")
@@ -89,6 +69,17 @@ public class WaiterController {
         
         return "waiter/waiterViewOrder";
     }
+    
+    @GetMapping("/new-party")
+    public String newParty(Model model){
+        return "waiter/waiterNewParty";
+    }
+    
+    @PostMapping("/create-party")
+    public String createNewParty(Party party){
+        PartyService.saveParty(party);
+        return "redirect:/waiter/parties";
+    }
         
     @PostMapping("/update")
     public String updateParty(Party party){
@@ -100,6 +91,30 @@ public class WaiterController {
     public String updatePartyStatus(@PathVariable long partyId, Model model){
       model.addAttribute("party", PartyService.getParty(partyId));
       return "waiter/update-status";
+    }
+    
+    
+    
+    
+    // deletes the order from the both databases "party" and "party_order"
+    // NEED TO FIX THIS 
+    // ITS DELETING RIGHT FROM PARTY BUT PARTY_ORDER IS NOT DELETING THE CORRECT THING
+    // ITS DELETING BASED OFF THE ID OF THE "party_order" NOT BY THE "party_id"
+    // NEED TO FIND WAY TO MAKE THAT WORK 
+    @GetMapping("delete/id={partyId}")
+    public String deleteParty(@PathVariable long partyId, Model model, Model model2){
+        
+        List<PartyOrder> list = PartyOrderService.getAllPartyOrders();
+        
+        for(PartyOrder items: list){
+            if(items.getParty_id() == partyId){
+                // need to find a way that it goes into the database and deletes every instance of the partyID 
+                PartyOrderService.deletePartyOrder(partyId);
+            }
+        }
+        
+        PartyService.deleteParty(partyId);
+        return "redirect:/waiter/parties";
     }
    
 }

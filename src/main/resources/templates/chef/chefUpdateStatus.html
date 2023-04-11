@@ -2,11 +2,12 @@
       xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout">
     
     <head>
-        <title>Update Party Status</title>
+        <title>Update Item Status</title>
         <meta charset="UTF-8" />
         <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
         <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css"/>
         <style>
+            
         </style>
         
 
@@ -20,8 +21,8 @@
                 <ul class="nav navbar-nav">
                     <li ><a th:href="@{/home}">Home</a></li>
                     <li><a th:href="@{/manager}">Manager</a></li>
-                    <li class="active"><a th:href="@{/waiter}">Waiter</a></li>
-                    <li><a th:href="@{/chef}">Chef</a></li>
+                    <li><a th:href="@{/waiter}">Waiter</a></li>
+                    <li class="active"><a th:href="@{/chef}">Chef</a></li>
                 </ul>
                 <form th:action="@{/logout}" method="post">
                     <input type="submit" value="Sign Out"/>
@@ -33,29 +34,31 @@
         
         
         <div class="container my-5">
-            <h3> Edit Party Info</h3>
+            <h3> Edit Status Info</h3>
             <div class="card">
                 <div class="card-body">
                     <div class="col-md-10">
-                        <form action="#" th:action="@{/waiter/update}" th:object="${party}" method="post">
+                        
+                        <form action="#" th:action="@{/chef/update}" th:object="${item}"
+                              method="post">
+                            
+                            <input type="hidden" th:field="*{id}" />
+                            <input type="hidden" th:field="*{item_id}"/>
+                            <input type="hidden" th:field="*{item_name}"/>
+                            <input type="hidden" th:field="*{party_id}"/>
+                            <input type="hidden" th:field="*{party_name}"/>
+                            <input type="hidden" th:field="*{item_quantity}"/>
+                            <input type="hidden" th:field="*{item_total}"/>
+                            
+                            <br>
+                            <br>
+                            <input type="text" th:field="*{item_status}"/>
+                            
+                            <br>
+                            <br>
+                            <button type="submit">Save</button>
 
-                            <table border="0" cellpadding="10">
-                                  <tr>
-                                    <td>Party ID:</td>
-                                    <td><input type="text" th:field="*{id}" value="${party.id}"/></td>
-                                </tr>
-                                <tr>
-                                    <td>Name:</td>
-                                    <td><input type="text" th:field="*{party_name}" value="${party.party_name}"  /></td>
-                                </tr>
-                                <tr>
-                                    <td>Status:</td>
-                                    <td><input type="text" th:field="*{party_status}" value="${party.party_status}"/></td>
-                                </tr>
-                                <tr>
-                                    <td colspan="2"><button type="submit">Save</button> </td>
-                                </tr>
-                            </table>
+                            
                         </form>
 
 

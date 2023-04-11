@@ -3,7 +3,7 @@
       xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout">
 
     <head>
-        <title>Waiter view order</title>
+        <title>Chef view order</title>
         <meta charset="UTF-8" />
         <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
         <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css"/>
@@ -22,8 +22,8 @@
                 <ul class="nav navbar-nav">
                     <li ><a th:href="@{/home}">Home</a></li>
                     <li><a th:href="@{/manager}">Manager</a></li>
-                    <li class="active"><a th:href="@{/waiter}">Waiter</a></li>
-                    <li><a th:href="@{/chef}">Chef</a></li>
+                    <li><a th:href="@{/waiter}">Waiter</a></li>
+                    <li  class="active"><a th:href="@{/chef}">Chef</a></li>
                 </ul>
                 <form th:action="@{/logout}" method="post">
                     <input type="submit" value="Sign Out"/>
@@ -45,30 +45,30 @@
                     <thead>
                         <tr>
                             <th>Item Name</th>
-                            <th>Item Price</th> 
                             <th>Item Quantity</th>
                             <th>Party Name</th>
-                            <th>Party Id</th>
                             <th>Status</th>
+                            <th></th>
                         </tr>
                     </thead>
                     <tbody>
-                        <tr th:each="party_order : ${items}" th:if="${party_order.party_id == partyId}">
+                        <tr th:each="item : ${items}" th:if="${item.party_id == partyId}">
                                              
-                            <td th:text=" ${party_order.item_name}"></td>
-                            <td th:text=" ${party_order.item_total}"></td>
-                            <td th:text=" ${party_order.item_quantity}"></td>
-                            <td th:text=" ${party_order.party_name}"></td>
-                            <td th:text=" ${party_order.party_id}"></td>
-                            <td th:text=" ${party_order.item_status}"></td>
+                            <td th:text=" ${item.item_name}"></td>
+                            <td th:text=" ${item.item_quantity}"></td>
+                            <td th:text=" ${item.party_name}"></td>
+                            <td th:text=" ${item.item_status}"></td>
+                            <td>
+                                <a th:href="@{/chef/update-status/id={id}(id=${item.id})}" class ="btn btn-primary">Edit order</a>
+                            </td>
+                            
                         </tr>
                         
                         
 
                     </tbody>
                 </table>
-                
-                <p style="color: black;font-size:22px;"><b>&nbsp;&nbsp;Total: $[[${#numbers.formatDecimal(total,1,2,'POINT')}]]</b></p>
+               
                 
                 
             </div>
@@ -77,11 +77,3 @@
     
     </body>
 </html>
-        
-        
-
-
-
-         
-
-  
