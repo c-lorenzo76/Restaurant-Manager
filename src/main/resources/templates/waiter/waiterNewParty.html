@@ -1,6 +1,7 @@
 <!DOCTYPE html>
 <html
-    xmlns="http://www.w3.org/1999/xhtml" xmlns:th="https://www.thymeleaf.org"
+    xmlns="http://www.w3.org/1999/xhtml" 
+      xmlns:th="https://www.thymeleaf.org"
       xmlns:sec="https://www.thymeleaf.org/thymeleaf-extras-springsecurity6"
       xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout">
     
@@ -8,10 +9,15 @@
         <title>Waiter - New Party</title>
         <meta charset="UTF-8" />
         <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
-        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css"/>           
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css"/>   
     </head>
     
     <body>
+        
+        
+        
+        
+        
         <nav class="navbar navbar-inverse">
             <div class="container-fluid">
                 <div class="navbar-header">
@@ -29,7 +35,7 @@
             </div>
         </nav>
         
-        <div class="containter">
+        <div class="container" >
             
             <h1 style="text-align: center;"> Enter new party info</h1>
             
@@ -37,16 +43,15 @@
                 <form action="#" th:action="@{/waiter/create-party}" method="post">
                     
                     <div class="form-group">
-                        
                         <label for="party_name">Party Name:</label>
                         <input type="text" class="form-control" name="party_name" id="party_name" placeholder="Enter party name"></input>
                     </div>
                     
                     <div class="form-group">
-                        
                         <label for="party_status">Party Status:</label>
                         <input type="text" class="form-control" name="party_status" id="party_status" placeholder="Enter Status"></input>
                     </div>
+                    
                     
                     <button type="submit" class="btn btn-primary">Submit</button>
                     

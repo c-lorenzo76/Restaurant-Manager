@@ -2,11 +2,26 @@
       xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout">
     
     <head>
-        <title>Update Party Status</title>
+        <title>Waiter - Update Party Status</title>
         <meta charset="UTF-8" />
         <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
         <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css"/>
         <style>
+            
+            
+            .center{
+                margin-left: auto;
+                margin-right: auto;
+            }
+            
+            th, td{
+                padding-top: 50px;
+                padding-bottom: 10px;
+                padding-left: 30px;
+                padding-right: 40px;
+            }
+            
+            
         </style>
         
 
@@ -32,38 +47,35 @@
         <h1 th:inline="text">Hello <span th:remove="tag" sec:authentication="name">thymeleaf</span>!</h1>
         
         
-        <div class="container my-5">
-            <h3> Edit Party Info</h3>
-            <div class="card">
-                <div class="card-body">
-                    <div class="col-md-10">
-                        <form action="#" th:action="@{/waiter/update}" th:object="${party}" method="post">
-
-                            <table border="0" cellpadding="10">
+        <div class="container ">
+            <h3 style="text-align:center;"> Edit Party Info </h3>
+            
+            <div style="align-content: center;">
+                <form action="#" th:action="@{/waiter/update}" th:object="${party}" method="post">
+                        
+                            <table class="center" border="0" cellpadding="10">
                                   <tr>
-                                    <td>Party ID:</td>
+                                    <td>ID: </td>
                                     <td><input type="text" th:field="*{id}" value="${party.id}"/></td>
                                 </tr>
                                 <tr>
-                                    <td>Name:</td>
+                                    <td>Name: </td>
                                     <td><input type="text" th:field="*{party_name}" value="${party.party_name}"  /></td>
                                 </tr>
                                 <tr>
-                                    <td>Status:</td>
+                                    <td>Status: </td>
                                     <td><input type="text" th:field="*{party_status}" value="${party.party_status}"/></td>
                                 </tr>
                                 <tr>
-                                    <td colspan="2"><button type="submit">Save</button> </td>
+                                    <td colspan="2"><button class="btn" type="submit">Save</button> </td>
                                 </tr>
                             </table>
-                        </form>
-
-
-                    </div>
-
-
-                </div>
+                            
+                                 
+                </form>
+                
             </div>
+                        
         </div>
         
         

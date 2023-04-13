@@ -19,16 +19,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
  *
  */
 
-/**
- * A way to store images is to make a database that holds the information of where the images is stored in the project
- * Then make a static package that contains all of the images and have it so that it is called whenever you want to use by the name of what it's stored
- * in the data base 
- * 
- * so database table contains info on pic location in project 
- * the project in templates static contains all of the images
- * when you want to call the images have it so that it calls based on the database location thing 
- * @author cristian
- */
+
 
 @Controller
 @RequestMapping("/waiter")
@@ -94,6 +85,17 @@ public class WaiterController {
     }
     
     
+    @PostMapping("/new-item")
+    public String addItemToOrder(Model model){
+        return "waiter/waiterAddToOrder";
+    }
+    
+    @GetMapping("/add-item")
+    public String addItem(PartyOrder item){
+        PartyOrderService.savePartyOrder(item);
+        return "redirect:/waiter/parties";
+    }
+    
     
     
     // deletes the order from the both databases "party" and "party_order"
@@ -109,7 +111,7 @@ public class WaiterController {
         for(PartyOrder items: list){
             if(items.getParty_id() == partyId){
                 // need to find a way that it goes into the database and deletes every instance of the partyID 
-                PartyOrderService.deletePartyOrder(partyId);
+                PartyOrderService.deletePartyOrder(items.getId());
             }
         }
         
