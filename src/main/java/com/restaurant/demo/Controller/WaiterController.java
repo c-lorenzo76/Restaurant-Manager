@@ -1,5 +1,6 @@
 package com.restaurant.demo.Controller;
 
+import com.restaurant.demo.Menu.MenuService;
 import com.restaurant.demo.Party.Party;
 import com.restaurant.demo.Party.PartyService;
 import com.restaurant.demo.PartyOrder.PartyOrder;
@@ -24,6 +25,8 @@ import org.springframework.web.bind.annotation.RequestMapping;
 @Controller
 @RequestMapping("/waiter")
 public class WaiterController {
+    
+    @Autowired MenuService MenuService;
     
     @Autowired
     PartyService PartyService;
@@ -85,8 +88,12 @@ public class WaiterController {
     }
     
     
-    @PostMapping("/new-item")
-    public String addItemToOrder(Model model){
+    @GetMapping("/new-item/id={partyId}")
+    public String addItemToOrder(@PathVariable long partyId, Model model){
+        model.addAttribute("listMenu", MenuService.getAllMenuItems());
+        model.addAttribute("partyCart", PartyOrderService.getAllPartyOrders());
+        model.addAttribute("partyId", partyId );
+        
         return "waiter/waiterAddToOrder";
     }
     

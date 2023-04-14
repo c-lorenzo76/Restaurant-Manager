@@ -41,7 +41,8 @@
                
                 <!-- ADD THE HREF REFERENCE FOR THE ITEM ADD -->
                <p class="my-5">
-                    <a href="#" class="btn btn-primary" >Add item to order</a>
+                   <a th:href="@{/waiter/new-item/id={partyId}(partyId=${partyId})}" class="btn btn-primary">Add item to order</a>
+  
                 </p>
                 
                 <table class="table table-unbordered">
