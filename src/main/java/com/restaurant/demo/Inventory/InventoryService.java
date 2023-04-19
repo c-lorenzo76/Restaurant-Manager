@@ -26,7 +26,7 @@ public class InventoryService {
         repo.deleteById(item_id);
     }
     
-    void saveItem(Inventory item){
+    public void saveItem(Inventory item){
         repo.save(item);
     }
 }

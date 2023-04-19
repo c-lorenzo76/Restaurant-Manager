@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<!--
+Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
+Click nbfs://nbhost/SystemFileSystem/Templates/Other/html.html to edit this template
+-->
+<html
+    xmlns="http://www.w3.org/1999/xhtml" xmlns:th="https://www.thymeleaf.org"
+    xmlns:sec="https://www.thymeleaf.org/thymeleaf-extras-springsecurity6"
+    xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout">
+    
+    <head>
+        <title>Manager - Update Inventory</title>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css"/>       
+    </head>
+    
+    
+    
+    <body>
+        <nav class="navbar navbar-inverse">
+            <div class="container-fluid">
+                <div class="navbar-header">
+                    <a class="navbar-brand">Restaurant</a>
+                </div>
+                <ul class="nav navbar-nav">
+                    <li><a th:href="@{/home}">Home</a></li>
+                    <li class="active"><a th:href="@{/manager}">Manager</a></li>
+                    <li><a th:href="@{/waiter}">Waiter</a></li>
+                    <li><a th:href="@{/chef}">Chef</a></li>
+                </ul>
+                <form th:action="@{/logout}" method="post">
+                    <input type="submit" value="Sign Out"/>
+                </form>
+            </div>
+        </nav>
+        
+        <h1 th:inline="text">Hello <span th:remove="tag" sec:authentication="name">thymeleaf</span>!</h1>
+        
+        <div class="container ">
+            <h3 style="text-align:center;">Update Inventory Quantity</h3>
+            
+            <div style="align-content: center;">
+                <form action="#" th:action="@{/manager/update}" th:object="${item}" method="post">
+                        
+                            <table class="center" border="0" cellpadding="10">
+                                  <tr>
+                                    <td></td>
+                                    <td><input type="hidden" th:field="*{id}" value="${item.id}"/></td>
+                                </tr>
+                                <tr>
+                                    <td></td>
+                                    <td><input type="hidden" th:field="*{itemName}" value="${item.itemName}"  /></td>
+                                </tr>
+                                <tr>
+                                    <td>Quantity: </td>
+                                    <td><input type="text" th:field="*{quantity}" value="${item.quantity}"/></td>
+                                </tr>
+                                <tr>
+                                    <td colspan="2"><button class="btn" type="submit">Save</button> </td>
+                                </tr>
+                            </table>
+                            
+                                 
+                </form>
+                
+            </div>
+                        
+        </div>
+        
+        
+        
+    </body>
+</html>
