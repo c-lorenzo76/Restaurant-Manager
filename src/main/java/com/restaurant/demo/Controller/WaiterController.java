@@ -106,10 +106,7 @@ public class WaiterController {
     
     
     // deletes the order from the both databases "party" and "party_order"
-    // NEED TO FIX THIS 
-    // ITS DELETING RIGHT FROM PARTY BUT PARTY_ORDER IS NOT DELETING THE CORRECT THING
-    // ITS DELETING BASED OFF THE ID OF THE "party_order" NOT BY THE "party_id"
-    // NEED TO FIND WAY TO MAKE THAT WORK 
+    // deleting the party_order based on the id of party_order not by the party_id
     @GetMapping("delete/id={partyId}")
     public String deleteParty(@PathVariable long partyId, Model model, Model model2){
         
