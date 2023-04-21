@@ -6,10 +6,29 @@
       xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout">
     
     <head>
-        <title>Add new item</title>
+        <title>Manager - Add new item</title>
         <meta charset="UTF-8" />
         <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
         <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css"/>   
+        
+        <style>
+            body{
+               background-color:#363636;
+            }
+            
+            .btn{
+                background-color:green;
+                color:white;
+                border:solid green;
+                font-family: Courier New;
+            }
+            
+            h1,h2,h3,h4,h5,p{
+                color:white;
+                font-family: Courier New;
+            }
+            
+        </style>
         
     </head>
     
@@ -41,15 +60,15 @@
                 <form action= "/manager/create" method="put">
                     
                     <div class="form-group">
-                        <label for="itemName">Name: </label>
+                        <label style="color:white;font-family: Courier New;" for="itemName">Name: </label>
                         <input type="text" class="form-control" name="itemName" id="itemName" placeholder="Enter Name"></input>
                     </div>
                     <div class="form-group">
-                        <label for="type">Type:</label>
+                        <label style="color:white;font-family: Courier New;" for="type">Type:</label>
                         <input type="text" class="form-control" name="type" id="type" placeholder="Enter type"></input>
                     </div>
                      <div class="form-group">
-                        <label for="price">Price:</label>
+                        <label style="color:white;font-family: Courier New;"for="price">Price:</label>
                         <input type="text" class="form-control" name="price" id="price" placeholder="Enter price"></input>
                     </div>
                     
@@ -59,12 +78,6 @@
 
             </div>
         </div>
-        
-        
-        
-        
-        
-        
         
         
     </body>

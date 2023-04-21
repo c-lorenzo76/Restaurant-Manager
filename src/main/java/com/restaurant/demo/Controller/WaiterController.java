@@ -1,10 +1,12 @@
 package com.restaurant.demo.Controller;
 
+import com.restaurant.demo.Menu.Menu;
 import com.restaurant.demo.Menu.MenuService;
 import com.restaurant.demo.Party.Party;
 import com.restaurant.demo.Party.PartyService;
 import com.restaurant.demo.PartyOrder.PartyOrder;
 import com.restaurant.demo.PartyOrder.PartyOrderService;
+import com.restaurant.demo.PartyOrder.PartyOrderStatus;
 import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -103,10 +105,48 @@ public class WaiterController {
         return "redirect:/waiter/parties";
     }
     
+    @GetMapping("/add-toOrder/{itemId}{partyId}")
+    public String addItemToOrder(@PathVariable int itemId, @PathVariable long partyId, Model model){
+        
+        String item_name = null;
+        String party_name = null;
+        
+        double item_total = 0;
+        
+        
+        List<Menu> itemList = MenuService.getAllMenuItems();
+        List<Party> partyList = PartyService.getAllParties();
+        
+        for(Menu item : itemList){
+            if(itemId == item.getId()){
+                item_name = item.getItemName();
+                item_total = item.getPrice();
+            }
+        }
+        
+        for(Party party : partyList){
+            if(partyId == party.getId()){
+                party_name = party.getParty_name();
+            }
+        }
+        
+        PartyOrder itemAdd = new PartyOrder();
+        itemAdd.setItem_id(itemId);
+        itemAdd.setItem_name(item_name);
+        itemAdd.setParty_id(partyId);
+        itemAdd.setParty_name(party_name);
+        itemAdd.setItem_status(PartyOrderStatus.NOTREADY);
+        itemAdd.setItem_quantity(1);
+        itemAdd.setItem_total(item_total);
+        
+        PartyOrderService.savePartyOrder(itemAdd);
+        
+        return "redirect:/waiter/parties";
+        
+        
+    }
     
     
-    // deletes the order from the both databases "party" and "party_order"
-    // deleting the party_order based on the id of party_order not by the party_id
     @GetMapping("delete/id={partyId}")
     public String deleteParty(@PathVariable long partyId, Model model, Model model2){
         
@@ -114,7 +154,7 @@ public class WaiterController {
         
         for(PartyOrder items: list){
             if(items.getParty_id() == partyId){
-                // need to find a way that it goes into the database and deletes every instance of the partyID 
+                
                 PartyOrderService.deletePartyOrder(items.getId());
             }
         }

@@ -8,6 +8,38 @@
         <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css"/>
         <style>
             
+            body{
+                background-color:#363636;
+            }
+            
+            h1, h2, h3, h4,h5{
+                font-family: Courier New;
+                color:white;
+            }
+            
+            .center{
+                margin-left:auto;
+                margin-right:auto;
+            }
+            
+            th, td{
+                font-family: Courier New;
+                color:white;
+                padding-top: 50px;
+                padding-bottom: 10px;
+                padding-left:30px;
+                padding-right:40px;
+            }
+            
+            
+            .btn{
+                background-color:green;
+                border:solid green;
+            }
+            
+            
+            
+            
         </style>
         
 
@@ -33,44 +65,56 @@
         <h1 th:inline="text">Hello <span th:remove="tag" sec:authentication="name">thymeleaf</span>!</h1>
         
         
-        <div class="container my-5">
-            <h3> Edit Status Info</h3>
-            <div class="card">
-                <div class="card-body">
-                    <div class="col-md-10">
+        
+        <div class="container">
+            
+            <h3 style="text-align: center;"> Edit Status Info</h3>
+            
+            <div style="align-content: center;">
+                <form action="#" th:action="@{/chef/update}" th:object="${item}" method="post">
+                    
+                    <table class="center" border="0" cellpadding="10">
+                        <tr>
+                            <td></td>
+                            <td><input type="hidden" th:field="*{id}" /></td>
+                        </tr>
+                        <tr>
+                            <td></td>
+                            <td><input type="hidden" th:field="*{item_id}"/></td>
+                        </tr>
+                        <tr>
+                            <td></td>
+                            <td><input type="hidden" th:field="*{item_name}"/></td>
+                        </tr>
+                        <tr>
+                            <td></td>
+                            <td><input type="hidden" th:field="*{party_id}"/></td>
+                        </tr>
+                         <tr>
+                            <td>Item Status</td>
+                            <td style="color:black; font-family: Courier New;"><input type="text" th:field="*{item_status}"/></td>
+                        </tr>
+                        <tr>
+                            <td></td>
+                            <td><input type="hidden" th:field="*{party_name}"/></td>
+                        </tr>
+                        <tr>
+                            <td></td>
+                            <td><input type="hidden" th:field="*{item_quantity}"/></td>
+                        </tr>
+                        <tr>
+                            <td></td>
+                            <td><input type="hidden" th:field="*{item_total}"/></td>
+                        </tr>
+                        <tr>
+                            <td colspan="2"><button class="btn" type="submit">Save</button></td>
+                        </tr>
                         
-                        <form action="#" th:action="@{/chef/update}" th:object="${item}"
-                              method="post">
-                            
-                            <input type="hidden" th:field="*{id}" />
-                            <input type="hidden" th:field="*{item_id}"/>
-                            <input type="hidden" th:field="*{item_name}"/>
-                            <input type="hidden" th:field="*{party_id}"/>
-                            <input type="hidden" th:field="*{party_name}"/>
-                            <input type="hidden" th:field="*{item_quantity}"/>
-                            <input type="hidden" th:field="*{item_total}"/>
-                            
-                            <br>
-                            <br>
-                            <input type="text" th:field="*{item_status}"/>
-                            
-                            <br>
-                            <br>
-                            <button type="submit">Save</button>
-
-                            
-                        </form>
-
-
-                    </div>
-
-
-                </div>
+                        
+                    </table>   
+                </form>
             </div>
         </div>
-        
-        
-        
-        
+  
     </body>
 </html>

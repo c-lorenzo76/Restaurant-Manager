@@ -8,6 +8,46 @@
         <meta charset="UTF-8" />
         <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
         <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css"/>   
+        <style>
+            body{
+                background-color:#363636;
+            }
+            
+            .waiterView1{
+                background-color:#363636;
+                text-align:center; 
+                color:aqua;
+                font-size:16px;
+                padding: 4px;
+                font-family: Courier New;
+            }
+            
+            .waiterView{
+                background-color:#363636;
+                text-align:center; 
+                color:aqua;
+                font-size:16px;
+                padding: 4px;
+                font-family: Courier New;
+            }
+            
+            .btn{
+                background-color:green;
+                color:white;
+                border:solid green;
+            }
+            
+            h1,h2,h3,h4,h5,h6,p{
+                color:white;
+                font-family:Courier New;
+            }
+            
+            th,td{
+                font-family: Courier New;
+                text-align: center;
+                border:1px solid white;
+            }
+        </style>
         
     </head>
     
@@ -35,28 +75,28 @@
 
             <div style="align-content: center;">
                     
-                <p class="my-5">
+                <p class="my-5" style="font-family:Courier New;">
                     <a href="/waiter/new-party" class="btn btn-primary" >Add a new party</a>
                 </p>
               
                 <table class="table table-bordered" >
-                    <thead>
+                    <thead class="waiterView1">
                         <tr>
                             
                             <th>Id</th>
                             <th>Party Name</th>
                             <th>Status</th>
-                            <th></th>
+                            <th>Update</th>
                         </tr>
                     </thead>
-                    <tbody>
+                    <tbody class="waiterView">
                         <tr th:each="party : ${partyList}">
-                            <td> <a th:href="@{/waiter/update-status/id={id}(id=${party.id})}" th:text="${party.id}"></a> </td>
+                            <td th:text="${party.id}"></td>
                             <td th:text=" ${party.party_name}"></td>
                             <td th:text=" ${party.party_status}"></td>
                             <td> 
                             <a th:href="@{/waiter/delete/id={id}(id=${party.id})}" class="btn btn-primary">Delete</a>
-                            
+                            <a th:href="@{/waiter/update-status/id={id}(id=${party.id})}" class="btn btn-primary">Update status</a>
                             <a th:href="@{/waiter/view-order/id={id}(id=${party.id})}" class="btn btn-primary">View Order</a>
                             </td>
                         </tr>

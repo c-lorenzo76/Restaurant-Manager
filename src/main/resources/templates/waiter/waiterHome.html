@@ -9,6 +9,10 @@
         <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css"/>
         <style>
             
+            body{
+                background-color:#363636;
+            }
+            
             .flex-container{
                 width: 100%;
                 height: auto;
@@ -33,11 +37,17 @@
             .flex-box a{
                 font-size: 16px;
                 color: white;
+                font-family: Courier New;
                 text-align: center;
                 padding: 14px 16px;
                 text-decoration: none;
                 background:transparent;
 
+            }
+            
+            h1,h2,h3,h4,h5,h6,p{
+                font-family: Courier New;
+                color:white;
             }
             
         </style>
@@ -63,21 +73,14 @@
         </nav>
         
         <h1 th:inline="text">Hello <span th:remove="tag" sec:authentication="name">thymeleaf</span>!</h1>
+        
         <main class="container">
             <div class="flex-container">
             
                 <div class="flex-box">
                     <a href="/waiter/parties">View Parties</a>
                 </div>
-                 <div class="flex-box">
-                    <a href="#">use case #2</a>
-                </div>
-                <div class="flex-box">
-                    <a href="#">use case #3</a>
-                </div>  
-                <div class="flex-box">
-                    <a href="#">use case #4</a>
-                </div>
+               
 
             </div>
             

@@ -9,7 +9,51 @@
         <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
         <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css"/>   
         
+        
+        <style>
+            
+            body{
+                background-color:#363636;
+            }
+            
+            .chefView{
+            background-color:#363636;
+            text-align:center; 
+            color:aqua;
+            font-size:16px;
+            padding: 4px;
+            font-family: Courier New;
+            }
+            
+            .chefView1{
+            background-color:#363636;
+            color:magenta;
+            font-size:16px;
+            font-family: Courier New;
+            text-align:center;
+            }
+            
+            .btn {
+                background-color:green;
+                color:white;
+                border:solid green;
+            }
+            
+            h1{
+                color:white
+            }
+            
+            th, td{
+                text-align: center;
+                border:1px solid white;
+            }
+            
+            
+        </style>
     </head>
+    
+    
+ 
     
     <body>
         <nav class="navbar navbar-inverse">
@@ -29,23 +73,24 @@
             </div>
         </nav>
         
+        
         <div class="container">
 
-            <h1 style="text-align:center;">Parties</h1>
+            <h1 style="text-align:center;color:white;">Parties</h1>
 
             <div style="align-content: center;">
         
               
-                <table class="table table-unbordered">
-                    <thead>
+                <table class="table table-bordered">
+                    <thead class="chefView1">
                         <tr>
                             <th>Id</th>
                             <th>Name</th>
                             <th>Status</th>
-                            <th></th>
+                            <th>View Order</th>
                         </tr>
                     </thead>
-                    <tbody>
+                    <tbody class="chefView">
                         <tr th:each="party : ${partyList}">
                             <td th:text="${party.id}"></td>
                             <td th:text=" ${party.party_name}"></td>
@@ -54,7 +99,6 @@
                             <a th:href="@{/chef/view-order/id={id}(id=${party.id})}" class="btn btn-primary">View Order</a>
                             </td>
                         </tr>
-
                     </tbody>
                 </table> 
             </div>

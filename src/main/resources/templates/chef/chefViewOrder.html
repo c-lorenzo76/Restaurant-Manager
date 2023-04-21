@@ -8,7 +8,44 @@
         <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
         <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css"/>
         <style>
-
+            
+            body{
+                background-color:#363636;
+            }
+            
+            .chefView{
+            background-color:#363636;
+            text-align:center; 
+            color:aqua;
+            font-size:16px;
+            padding: 4px;
+            font-family: Courier New;
+            }
+            
+            .chefView1{
+            background-color:#363636; 
+            text-align: center;
+            color:magenta;
+            font-size:16px;
+            font-family: Courier New;
+            
+            }
+            
+            h1{
+                color:white;
+            }
+            
+            .btn{
+                background-color:green;
+                color:white;
+                border:solid green;
+            }
+            
+            th, td{
+                border:1px solid white;
+            }
+            
+            
         </style>
 
 
@@ -30,8 +67,6 @@
                 </form>
             </div>
         </nav>
-
-        <h1 th:inline="text">Hello <span th:remove="tag" sec:authentication="name">thymeleaf</span>!</h1>
         
     <div class="container">
 
@@ -41,17 +76,17 @@
                 
                
                 
-                <table class="table table-unbordered">
-                    <thead>
+                <table class="table table-bordered">
+                    <thead class="chefView1">
                         <tr>
-                            <th>Item Name</th>
-                            <th>Item Quantity</th>
-                            <th>Party Name</th>
+                            <th>Item</th>
+                            <th>Quantity</th>
+                            <th>Party</th>
                             <th>Status</th>
-                            <th></th>
+                            <th>Update</th>
                         </tr>
                     </thead>
-                    <tbody>
+                    <tbody class="chefView">
                         <tr th:each="item : ${items}" th:if="${item.party_id == partyId}">
                                              
                             <td th:text=" ${item.item_name}"></td>
@@ -59,7 +94,7 @@
                             <td th:text=" ${item.party_name}"></td>
                             <td th:text=" ${item.item_status}"></td>
                             <td>
-                                <a th:href="@{/chef/update-status/id={id}(id=${item.id})}" class ="btn btn-primary">Edit order</a>
+                                <a th:href="@{/chef/update-status/id={id}(id=${item.id})}" class ="btn btn-primary">update status</a>
                             </td>
                             
                         </tr>

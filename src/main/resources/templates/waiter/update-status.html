@@ -8,6 +8,9 @@
         <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css"/>
         <style>
             
+            body{
+                background-color:#363636;
+            }
             
             .center{
                 margin-left: auto;
@@ -15,10 +18,26 @@
             }
             
             th, td{
+                color:white;
+                font-family: Courier New;
                 padding-top: 50px;
                 padding-bottom: 10px;
                 padding-left: 30px;
                 padding-right: 40px;
+            }
+            
+            h1,h2,h3,h4,h5,p{
+                color:white;
+                font-family: Courier New;
+
+            }
+            
+            .btn{
+                background-color:green;
+                color:white;
+                border:solid green;
+                align-content: center;
+                text-align: center;
             }
             
             
@@ -48,23 +67,23 @@
         
         
         <div class="container ">
-            <h3 style="text-align:center;"> Edit Party Info </h3>
+            <h3 style="text-align:center;"> Edit Party Status </h3>
             
             <div style="align-content: center;">
                 <form action="#" th:action="@{/waiter/update}" th:object="${party}" method="post">
                         
                             <table class="center" border="0" cellpadding="10">
                                   <tr>
-                                    <td>ID: </td>
-                                    <td><input type="text" th:field="*{id}" value="${party.id}"/></td>
+                                    <td></td>
+                                    <td><input type="hidden" th:field="*{id}" value="${party.id}"/></td>
                                 </tr>
                                 <tr>
-                                    <td>Name: </td>
-                                    <td><input type="text" th:field="*{party_name}" value="${party.party_name}"  /></td>
+                                    <td></td>
+                                    <td><input type="hidden" th:field="*{party_name}" value="${party.party_name}"  /></td>
                                 </tr>
                                 <tr>
-                                    <td>Status: </td>
-                                    <td><input type="text" th:field="*{party_status}" value="${party.party_status}"/></td>
+                                    <td>Status:</td>
+                                    <td style="color:black;"><input type="text" th:field="*{party_status}" value="${party.party_status}"/></td>
                                 </tr>
                                 <tr>
                                     <td colspan="2"><button class="btn" type="submit">Save</button> </td>

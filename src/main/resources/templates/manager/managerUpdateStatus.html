@@ -12,7 +12,44 @@ Click nbfs://nbhost/SystemFileSystem/Templates/Other/html.html to edit this temp
         <title>Manager - Update Inventory</title>
         <meta charset="UTF-8" />
         <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
-        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css"/>       
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css"/>  
+        
+        <style>
+            body{
+                background-color:#363636;
+            }
+            
+            h1,h2,h3,h4,h5,p{
+                color:white;
+                font-family: Courier New;
+
+            }
+            
+            th,td{
+                color:white;
+                font-family: Courier New;
+                padding-top: 50px;
+                padding-bottom: 10px;
+                padding-left: 30px;
+                padding-right: 40px;
+            }
+            
+            .btn{
+                background-color:green;
+                color:white;
+                border:solid green;
+                font-family: Courier New;
+
+            }
+            
+            
+            .center{
+               
+                margin-left: auto;
+                margin-right: auto;
+            }
+            
+        </style>
     </head>
     
     
@@ -54,7 +91,7 @@ Click nbfs://nbhost/SystemFileSystem/Templates/Other/html.html to edit this temp
                                 </tr>
                                 <tr>
                                     <td>Quantity: </td>
-                                    <td><input type="text" th:field="*{quantity}" value="${item.quantity}"/></td>
+                                    <td style="color:black;"><input type="text" th:field="*{quantity}" value="${item.quantity}"/></td>
                                 </tr>
                                 <tr>
                                     <td colspan="2"><button class="btn" type="submit">Save</button> </td>
