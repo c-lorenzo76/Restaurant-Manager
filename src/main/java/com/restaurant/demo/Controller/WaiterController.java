@@ -105,9 +105,8 @@ public class WaiterController {
         return "redirect:/waiter/parties";
     }
     
-    @GetMapping("/add-toOrder/{itemId}{partyId}")
+    @GetMapping("/add-toOrder/id={itemId}/party={partyId}")
     public String addItemToOrder(@PathVariable int itemId, @PathVariable long partyId, Model model){
-        
         String item_name = null;
         String party_name = null;
         
@@ -141,7 +140,7 @@ public class WaiterController {
         
         PartyOrderService.savePartyOrder(itemAdd);
         
-        return "redirect:/waiter/parties";
+        return "redirect:/waiter/new-item/id={partyId}";
         
         
     }

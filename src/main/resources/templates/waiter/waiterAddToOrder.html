@@ -10,7 +10,33 @@
         <title>Waiter - Add Item To Order</title>
         <meta charset="UTF-8"/>
         <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
-        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css"/>      
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css"/>  
+        <style>
+            
+            body{
+                background-color:#363636;
+                
+            }
+            
+            .btn{
+                background-color:green;
+                color:white;
+                border:solid green;
+                font-family:Courier New;
+            }
+            
+            h1,h2,h3,h4,h5,h6,p, td, th{
+                font-family: Courier New;
+                color:white;
+            }
+            
+            th,td{
+                border: 1px solid transparent;
+                color:white;
+                font-family: Courier New;
+            }
+            
+        </style>
     </head>
 
     <body>
@@ -37,24 +63,68 @@
             
             <h3 style="text-align: left;">Menu</h3>
             <div style="align-content: left;"> 
-                <table class="table table-bordered">
+                
+                <table class="table table-unbordered">
                     <thead>
                         <tr>
-                            <th>Item</th>
+                            <th>Entree</th>
                             <th>Price</th>
                             <th></th>
                         </tr>
                     </thead>
                     <tbody>
-                        <tr th:each="menu : ${listMenu}">
-                            <td th:text="${menu.itemName}"></td>
-                            <td th:text="${menu.price}"></td>
-                            <td>
-                                <a href="#" >add item</a>
-                            </td>
+                        <tr th:each="menu : ${listMenu}" th:if="${menu.type == 'entree'}">
+                                             
+                            <td th:text=" ${menu.itemName}"></td>
+                            <td th:text=" ${menu.price}"></td>
+                            <td> 
+                                <a th:href="@{/waiter/add-toOrder/id={itemId}/party={partyId}(itemId=${menu.id},partyId=${partyId})}" class="btn btn-primary">Add to order</a>
+                            
+                            </td>    
                         </tr>
+
+                    </tbody>
+                    
+                    <thead>
+                        <tr>
+                            <th>Dessert</th>
+                            <th>Price</th>
+                            <th></th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr th:each="menu : ${listMenu}" th:if="${menu.type == 'dessert'}">
+                                             
+                            <td th:text=" ${menu.itemName}"></td>
+                            <td th:text=" ${menu.price}"></td>
+                            <td> 
+                                <a th:href="@{/waiter/add-toOrder/id={itemId}/party={partyId}(itemId=${menu.id},partyId=${partyId})}" class="btn btn-primary">Add to order</a>
+                            
+                            
+                            </td>                         </tr>
+
+                    </tbody>
+                    
+                    <thead>
+                        <tr>
+                            <th>Drinks</th>
+                            <th>Price</th>
+                            <th></th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr th:each="menu : ${listMenu}" th:if="${menu.type == 'drink'}">
+                                             
+                            <td th:text=" ${menu.itemName}"></td>
+                            <td th:text=" ${menu.price}"></td>
+                            <td> 
+                               <a th:href="@{/waiter/add-toOrder/id={itemId}/party={partyId}(itemId=${menu.id},partyId=${partyId})}" class="btn btn-primary">Add to order</a>
+                            </td> 
+                        </tr>
+
                     </tbody>
                 </table>
+            
                 </div>
                 
             
@@ -62,7 +132,7 @@
             <h3 style="text-align: left;">Cart</h3>
             
             <div style="align-content: right;">
-                <table class=" table table-bordered">
+                <table class=" table table-unbordered">
                     <thead>
                         <tr>
                             <th>Item</th>
