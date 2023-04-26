@@ -8,4 +8,4 @@ The app seeks simplicity with the idea of rush hour in mind as employees would n
 This app will feature a way for the users to see and maintain inventory as well as the status of orders and seating.	
 
 
-![Use-Case Diagram](https://raw.githubusercontent.com/c-lorenzo76/Restaurant-Manager/main/Restaurant diagram.png)
+![Use-Case Diagram](https://raw.githubusercontent.com/c-lorenzo76/Restaurant-Manager/main/Restaurant_diagram.png)
